@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій сайт з коментарями</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        #comments {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ласкаво просимо!</h1>
+<p>Це простий сайт, де ви можете залишати коментарі.</p>
+
+<div id="comment-form">
+    <input type="text" id="name" placeholder="Ваше ім'я">
+    <textarea id="message" rows="3" placeholder="Ваш коментар"></textarea>
+    <button onclick="addComment()">Додати коментар</button>
+</div>
+
+<div id="comments">
+    <h2>Коментарі:</h2>
+</div>
+
+<script>
+    function addComment() {
+        const name = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !message) {
+            alert('Будь ласка, введіть ім\'я та коментар!');
+            return;
+        }
+
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.innerHTML = `<strong>${name}</strong><p>${message}</p>`;
+
+        document.getElementById('comments').appendChild(commentDiv);
+
+        // очищаємо поля
+        document.getElementById('name').value = '';
+        document.getElementById('message').value = '';
+    }
+</script>
+
+</body>
+</html>
